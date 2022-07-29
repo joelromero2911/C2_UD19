@@ -7,20 +7,26 @@ import javax.swing.*;
 
 public class AplicacionGrafica extends JFrame{
 	
+	// Attributes.
 	private JPanel contentPane;
 	
+	/**
+	 * Default constructor for 'AplicacionGrafica'.
+	 */
 	public AplicacionGrafica() {
 		
-		setTitle("Titulo de la ventana");
+		// Parameters of the main window.
+		setTitle("Encuesta");
 		setBounds(400, 200, 500, 500);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		
+		// Creating the Jpanel that will contain the components.
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		
-		// Componentes
+		// Components
 		// Radio buttons
 		JRadioButton radio_01 = new JRadioButton("Windows", false);
 		radio_01.setBounds(40, 40, 109, 23);
@@ -66,10 +72,14 @@ public class AplicacionGrafica extends JFrame{
 		btnOk.setBounds(40, 310, 50, 23);
 		contentPane.add(btnOk);
 		
+		// Event listener, control when mouse clicks on the button 'btnOk'.
 		btnOk.addActionListener(new ActionListener() {
+			
+			// Collects the information from the main window panel and displays it.
 			public void actionPerformed(ActionEvent e) {
 				String message = "";
 				
+				// Data from RadioButtons.
 				for (Enumeration<AbstractButton> buttons = bgroup.getElements(); buttons.hasMoreElements();) {
 		            AbstractButton button = buttons.nextElement();
 
@@ -78,6 +88,7 @@ public class AplicacionGrafica extends JFrame{
 		            }
 		        }
 				
+				// Data from CheckBoxes.
 				if(checkButton_01.isSelected()) {
 					String chck_01 = checkButton_01.getText();
 					message += "CheckBox 1: " + checkButton_01.getText() + "\n";
@@ -91,6 +102,7 @@ public class AplicacionGrafica extends JFrame{
 					message += "CheckBox 3: " + checkButton_03.getText() + "\n";
 				}
 				
+				// Data from Slider.
 				message += "Slider: " + slider.getValue() + "\n";
 				
 				// Message dialog that shows the selected data from previous panel.
