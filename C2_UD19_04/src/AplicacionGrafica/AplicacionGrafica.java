@@ -1,16 +1,13 @@
 package AplicacionGrafica;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import MiniCalculadora.MiniCalculadora;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.awt.event.ActionEvent;
 
 public class AplicacionGrafica extends JFrame{
@@ -60,6 +57,11 @@ public class AplicacionGrafica extends JFrame{
 		lblResult.setBounds(353, 53, 86, 14);
 		contentPane.add(lblResult);
 		
+		String[] history = {"", "", "", ""};
+		JLabel lblHistoric = new JLabel();
+		lblHistoric.setBounds(353, 100, 86, 60);
+		contentPane.add(lblHistoric);
+		
 		/*Creation, definition of dimensions and added to the panel of the JTextFields*/				
 		textFieldOp1 = new JTextField();
 		textFieldOp1.setBounds(51, 50, 86, 20);
@@ -99,29 +101,80 @@ public class AplicacionGrafica extends JFrame{
 		/*Creation of the button listeners*/				
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			Double r =calc.sum(Double.parseDouble(textFieldOp1.getText()),Double.parseDouble(textFieldOp2.getText()));
-			textFieldResultado.setText(r.toString());
+				
+				String msgHistory = "<html><body>";
+				
+				Double r = calc.sum(Double.parseDouble(textFieldOp1.getText()),Double.parseDouble(textFieldOp2.getText()));
+				textFieldResultado.setText(r.toString());
+				
+				history[3] = history[2];
+				history[2] = history[1];
+				history[1] = history[0];
+				history[0] = r.toString();
+				for (int i = 0; i < history.length; i++) {
+					msgHistory += history[i] + "<br>";
+				}
+				lblHistoric.setText(msgHistory);
+
 			}
 		});
 		
-		btnPlus.addActionListener(new ActionListener() {
+		btnMinus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				String msgHistory = "<html><body>";
+				
+				Double r = calc.rest(Double.parseDouble(textFieldOp1.getText()),Double.parseDouble(textFieldOp2.getText()));
+				textFieldResultado.setText(r.toString());
+				
+				history[3] = history[2];
+				history[2] = history[1];
+				history[1] = history[0];
+				history[0] = r.toString();
+				for (int i = 0; i < history.length; i++) {
+					msgHistory += history[i] + "<br>";
+				}
+				lblHistoric.setText(msgHistory);
 			}
 		});
 		
-		btnPlus.addActionListener(new ActionListener() {
+		btnDivide.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				String msgHistory = "<html><body>";
+				
+				Double r = calc.division(Double.parseDouble(textFieldOp1.getText()),Double.parseDouble(textFieldOp2.getText()));
+				textFieldResultado.setText(r.toString());
+				
+				history[3] = history[2];
+				history[2] = history[1];
+				history[1] = history[0];
+				history[0] = r.toString();
+				for (int i = 0; i < history.length; i++) {
+					msgHistory += history[i] + "<br>";
+				}
+				lblHistoric.setText(msgHistory);
 			}
 		});
 
-		btnPlus.addActionListener(new ActionListener() {
+		btnMultiply.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				String msgHistory = "<html><body>";
+				
+				Double r = calc.multiplication(Double.parseDouble(textFieldOp1.getText()),Double.parseDouble(textFieldOp2.getText()));
+				textFieldResultado.setText(r.toString());
+				
+				history[3] = history[2];
+				history[2] = history[1];
+				history[1] = history[0];
+				history[0] = r.toString();
+				for (int i = 0; i < history.length; i++) {
+					msgHistory += history[i] + "<br>";
+				}
+				lblHistoric.setText(msgHistory);
 			}
 		});
-
-		    
+		
 	}	
 }
