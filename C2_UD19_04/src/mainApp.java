@@ -1,9 +1,10 @@
+import AplicacionGrafica.AplicacionGrafica;
 
 public class mainApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
+		AplicacionGrafica window = new AplicacionGrafica();
 	}
 
 }
