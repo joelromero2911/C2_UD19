@@ -44,7 +44,7 @@ public class AplicacionGrafica extends JFrame {
 	    
 		contentPane.add(etiqueta);
 		
-		/*Creation of a border, it'll serve to be able to see the next elements of the panel without putting the mouse over them*/ 
+		/*Creation of a border*/ 
 		Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
 
 		/*Creation, definition of dimensions and added to the panel of a textfield*/	
