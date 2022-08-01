@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
 import java.awt.event.ActionEvent;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class AplicacionGrafica extends JFrame{
 	/*Attribute*/
@@ -29,7 +32,7 @@ public class AplicacionGrafica extends JFrame{
 		setTitle("MiniCalculadora");//PopUp window title
 		
 		/* X Y coordinates of the application and its height and length */
-		setBounds(700, 200, 508, 205);
+		setBounds(600, 200, 508, 350);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);//Close the window  when the operation is close
 		
@@ -37,10 +40,13 @@ public class AplicacionGrafica extends JFrame{
 		
 		/*Creation and added the panel to the window*/
 		contentPane = new JPanel();
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		contentPane.setLayout(null);
 		
 		setContentPane(contentPane);
+		
+		
 		
 		
 		/*Creation, definition of dimensions and added to the panel of the  labels*/		
@@ -57,43 +63,63 @@ public class AplicacionGrafica extends JFrame{
 		lblResult.setBounds(353, 53, 86, 14);
 		contentPane.add(lblResult);
 		
-		String[] history = {"", "", "", ""};
 		JLabel lblHistoric = new JLabel();
-		lblHistoric.setBounds(353, 100, 86, 60);
+		String[] history = {"", "", "", ""};
+		lblHistoric.setBackground(SystemColor.window);
+		lblHistoric.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
+		lblHistoric.setBounds(51, 150, 388, 60);
 		contentPane.add(lblHistoric);
+	
 		
 		/*Creation, definition of dimensions and added to the panel of the JTextFields*/				
 		textFieldOp1 = new JTextField();
+		textFieldOp1.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
 		textFieldOp1.setBounds(51, 50, 86, 20);
 		contentPane.add(textFieldOp1);
 		textFieldOp1.setColumns(10);
+	
 		
 		textFieldOp2 = new JTextField();
+		textFieldOp2.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
 		textFieldOp2.setBounds(51, 111, 86, 20);
 		contentPane.add(textFieldOp2);
 		textFieldOp2.setColumns(10);
+	
 		
 		textFieldResultado = new JTextField();
+		textFieldResultado.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
 		textFieldResultado.setBounds(353, 79, 86, 20);
 		contentPane.add(textFieldResultado);
 		textFieldResultado.setColumns(10);
 	
+	
 		/*Creation, definition of dimensions and added to the panel of the buttons*/				
 		JButton btnPlus = new JButton("+");
+		btnPlus.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
 		btnPlus.setBounds(182, 60, 54, 23);
 		contentPane.add(btnPlus);
+
 		
 		JButton btnDivide = new JButton("/");
+		btnDivide.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
 		btnDivide.setBounds(253, 94, 54, 23);
 		contentPane.add(btnDivide);
+	
 		
 		JButton btnMinus = new JButton("-");
+		btnMinus.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
 		btnMinus.setBounds(253, 60, 54, 23);
 		contentPane.add(btnMinus);
+
 		
 		JButton btnMultiply = new JButton("*");
+		btnMultiply.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
 		btnMultiply.setBounds(182, 94, 54, 23);
 		contentPane.add(btnMultiply);
+	
+		JButton close = new JButton("Salir");
+		close.setBounds(370, 250, 70, 23);
+		contentPane.add(close);
 		
 		
 		MiniCalculadora calc = new MiniCalculadora();
@@ -174,7 +200,17 @@ public class AplicacionGrafica extends JFrame{
 				}
 				lblHistoric.setText(msgHistory);
 			}
+			
 		});
 		
-	}	
+		close.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		
+	}
+
+
+	
 }
