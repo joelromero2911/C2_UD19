@@ -32,7 +32,7 @@ public class AplicacionGrafica extends JFrame{
 		setTitle("MiniCalculadora");//PopUp window title
 		
 		/* X Y coordinates of the application and its height and length */
-		setBounds(600, 200, 508, 350);
+		setBounds(600, 200, 508, 330);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);//Close the window  when the operation is close
 		
@@ -58,16 +58,16 @@ public class AplicacionGrafica extends JFrame{
 		lblNum1.setBounds(51, 30, 74, 14);
 		contentPane.add(lblNum1);
 		
-		JLabel lblResult = new JLabel("Resultado:");
+		JLabel lblResult = new JLabel("Anteriores Resultados:");
 		lblResult.setDisplayedMnemonicIndex(1);
-		lblResult.setBounds(353, 53, 86, 14);
+		lblResult.setBounds(51, 153, 163, 14);
 		contentPane.add(lblResult);
 		
 		JLabel lblHistoric = new JLabel();
 		String[] history = {"", "", "", ""};
 		lblHistoric.setBackground(SystemColor.window);
 		lblHistoric.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
-		lblHistoric.setBounds(51, 150, 388, 60);
+		lblHistoric.setBounds(51, 179, 388, 60);
 		contentPane.add(lblHistoric);
 	
 		
@@ -87,6 +87,7 @@ public class AplicacionGrafica extends JFrame{
 	
 		
 		textFieldResultado = new JTextField();
+		textFieldResultado.setEditable(false);
 		textFieldResultado.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
 		textFieldResultado.setBounds(353, 79, 86, 20);
 		contentPane.add(textFieldResultado);
@@ -121,6 +122,11 @@ public class AplicacionGrafica extends JFrame{
 		close.setBounds(370, 250, 70, 23);
 		contentPane.add(close);
 		
+		JLabel lblResult_1 = new JLabel("Resultado:");
+		lblResult_1.setDisplayedMnemonicIndex(1);
+		lblResult_1.setBounds(353, 53, 86, 14);
+		contentPane.add(lblResult_1);
+		
 		
 		MiniCalculadora calc = new MiniCalculadora();
 		
@@ -136,9 +142,9 @@ public class AplicacionGrafica extends JFrame{
 				history[3] = history[2];
 				history[2] = history[1];
 				history[1] = history[0];
-				history[0] = r.toString();
+				history[0] = textFieldOp1.getText()+ " + "+textFieldOp2.getText() +" = " + r.toString();
 				for (int i = 0; i < history.length; i++) {
-					msgHistory += history[i] + "<br>";
+					msgHistory +=  history[i] + "<br>";
 				}
 				lblHistoric.setText(msgHistory);
 
@@ -156,7 +162,7 @@ public class AplicacionGrafica extends JFrame{
 				history[3] = history[2];
 				history[2] = history[1];
 				history[1] = history[0];
-				history[0] = r.toString();
+				history[0] = textFieldOp1.getText()+ " - "+textFieldOp2.getText() +" = " + r.toString();
 				for (int i = 0; i < history.length; i++) {
 					msgHistory += history[i] + "<br>";
 				}
@@ -175,7 +181,7 @@ public class AplicacionGrafica extends JFrame{
 				history[3] = history[2];
 				history[2] = history[1];
 				history[1] = history[0];
-				history[0] = r.toString();
+				history[0] = textFieldOp1.getText()+ " / "+textFieldOp2.getText() +" = " + r.toString();
 				for (int i = 0; i < history.length; i++) {
 					msgHistory += history[i] + "<br>";
 				}
@@ -194,7 +200,7 @@ public class AplicacionGrafica extends JFrame{
 				history[3] = history[2];
 				history[2] = history[1];
 				history[1] = history[0];
-				history[0] = r.toString();
+				history[0] = textFieldOp1.getText()+ " * "+textFieldOp2.getText() +" = " + r.toString();
 				for (int i = 0; i < history.length; i++) {
 					msgHistory += history[i] + "<br>";
 				}
